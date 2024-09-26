@@ -30,6 +30,25 @@
             "searchDir": [
                 "${env:PICO_SDK_PATH}"
             ],
+        },
+        {
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceRoot}/build/examples/rx/rx_example.elf",
+            "name": "rx_example",
+            "type": "cortex-debug",
+            "request": "attach",
+            "gdbPath": "/usr/bin/gdb-multiarch",
+            "objdumpPath": "/usr/bin/arm-none-eabi-objdump",
+            "gdbTarget": "host.docker.internal:3333",
+            "servertype": "external",
+            "postAttachCommands": [
+                "load",
+                "tbreak main",
+                "c"
+            ],
+            "searchDir": [
+                "${env:PICO_SDK_PATH}"
+            ],
         }
     ]
 }
